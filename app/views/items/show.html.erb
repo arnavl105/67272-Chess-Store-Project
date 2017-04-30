@@ -5,6 +5,7 @@
   <div class="small-5 columns">
     <%= render :partial => "price_history" unless @price_history.empty?%>
     <%= render :partial => "similar_items" unless @similar_items.empty?%>
+    <%= link_to("New Purchase", new_purchase_path(item_id: @item.id), class: 'button tiny radius', id: "new_purchase_link", remote: true) %>
   </div>
 </div>
 
