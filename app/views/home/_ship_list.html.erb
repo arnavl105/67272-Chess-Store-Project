@@ -1,0 +1,33 @@
+<div id="ship_list">
+<h5>To Be Shipped List</h5>
+
+<% unless @orders_to_ship.nil? || @orders_to_ship.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Shipped</th>
+        <th>School</th>
+        <th>Items</th>
+        <th>Date Placed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders_to_ship.each do |order| %>
+        <tr>
+          <td class="centered"><%= link_to(image_tag("unshipped.png"), toggle_path(order, status: 'shipped'), remote: true, method: 'patch') %></td>
+          <td><%= order.school.name %></td>
+          <td>
+          <ul><% order.order_items.each do |item| %>
+            <li><%= item.item.name %>, <%= item.quantity %></li>
+          </ul>
+          <% end %>
+          </td>
+          <td><%= order.date %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no items that need to be reorder at this time.</p>
+<% end %>
+</div>

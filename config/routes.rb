@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :items
   resources :purchases
   resources :item_prices
+  resources :orders
 
   # Semi-static page routes
   get 'home' => 'home#home', as: :home
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
 
+  patch 'toggle_order/:id' => 'orders#toggle', as: :toggle
 
 end
