@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
 
   authorize_resource
 
+  include ChessStoreHelpers::Cart
+
   def index
     # get info on active items for the big three...
     @boards = Item.active.for_category('boards').alphabetical.paginate(:page => params[:page]).per_page(10)
@@ -48,6 +50,10 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
     redirect_to items_path, notice: "Successfully removed #{@item.name} from the system."
+  end
+
+  def add_to_cart
+    add_item_to_cart(@item.id.to_s)
   end
 
   private

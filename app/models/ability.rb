@@ -35,6 +35,7 @@ class Ability
             s.user_id == user.id
         end
         can :create, School
+        can :add_to_cart, Item
     else
         #guest
         can :read, Item
