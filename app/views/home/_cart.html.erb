@@ -1,0 +1,17 @@
+<div class="panel clearfix">
+
+<h3>Cart</h3>
+
+<% unless session[:cart].empty? %>
+  <div class="panel clearfix">
+    <ul>
+      <% session[:cart].each do |item| %>
+        <li><%= link_to item.name, item_path(item) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  Your Cart is Empty
+<% end %>
+
+</div>

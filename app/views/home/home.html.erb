@@ -6,6 +6,8 @@
 	<%= render :partial => 'reorder_list' %>
 <% elsif current_user.role? :shipper %>
 	<%= render :partial => 'ship_list' %>
+<% elsif current_user.role? :customer %>
+	<%= render :partial => 'customer_dashboard' %>
 <% else %>
 	<%= render :partial => 'general_home' %>	
 <% end %>

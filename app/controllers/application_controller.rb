@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery with: :exception
 
+
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "You do not have the proper authorization"
     redirect_to home_path
@@ -13,6 +14,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
 
   def logged_in?
     current_user
