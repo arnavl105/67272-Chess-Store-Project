@@ -1,0 +1,24 @@
+<div id="cart_contents">
+
+<div class="panel clearfix">
+
+<h3>Cart</h3>
+
+<% unless session[:cart].empty? %>
+  <table class="table table-striped">
+    <tbody>
+      <% session[:cart].each do |item_id, quantity| %>
+        <tr>
+	        <td><%= link_to Item.find(item_id).name, item_path(item_id) %>, <%= quantity%></td>
+	        <td class="centered"><%= link_to(image_tag("remove.png"), remove_from_cart_path(item_id), remote: true) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Your Cart is Empty</p>
+<% end %>
+
+</div>
+
+</div>

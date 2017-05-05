@@ -3,8 +3,11 @@
     <%= render :partial => "item_details" %>
   </div>
   <div class="small-5 columns">
-    <%= render :partial => "price_history" unless @price_history.empty?%>
-    <%= render :partial => "similar_items" unless @similar_items.empty?%>
+  	<%= render :partial => "partials/cart" unless session[:cart].nil? || session[:cart].empty? %>
+  	<% if can? :edit, ItemPrice %>
+    	<%= render :partial => "price_history" unless @price_history.empty? %>
+    <% end %>
+    <%= render :partial => "similar_items" unless @similar_items.empty? %>
     <%= link_to("New Purchase", new_purchase_path(item_id: @item.id), class: 'button tiny radius', id: "new_purchase_link", remote: true) %>
   </div>
 </div>

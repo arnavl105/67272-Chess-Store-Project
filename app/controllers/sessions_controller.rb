@@ -30,4 +30,9 @@
       redirect_to item_path(@item)
     end
 
+    def remove_from_cart
+      @item = Item.find(params[:id])
+      remove_item_from_cart(@item.id.to_s)
+    end
+
   end
