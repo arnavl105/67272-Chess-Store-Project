@@ -1,0 +1,17 @@
+<p>Shipping Price: $<%=  @order.shipping_costs.round(2) %></p>
+<p>Grand Total: $<%= @order.grand_total.round(2) %></p>
+
+<%= simple_form_for @order, html: { class: 'form-horizontal', multipart: true } do |f| %>
+  <fieldset>
+    <legend> Payment Details </legend>
+
+    <%= f.input :credit_card_number, input_html: {class: "avg"} %>
+    <%= f.input :expiration_month, :as => :integer, input_html: {class: "avg"} %>
+    <%= f.input :expiration_year, :as => :integer, input_html: {class: "avg"} %>
+
+    <div class="form-actions">
+      <%= f.submit 'Pay', :class => 'button radius' %>
+      <%= link_to 'Cancel', items_path, :class => 'button alert radius' %>
+    </div>
+  </fieldset>
+<% end %>

@@ -28,4 +28,8 @@ Rails.application.routes.draw do
 
   patch 'toggle_order/:id' => 'orders#toggle', as: :toggle
 
+  get 'pay/:id' => 'orders#pay', as: :pay
+
+  patch 'payment/:id' => 'orders#payment', as: :payment
+
 end
