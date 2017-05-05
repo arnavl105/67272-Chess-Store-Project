@@ -36,6 +36,7 @@ class Ability
         end
         can :create, School
         can :add_to_cart, Item
+        can :remove_from_cart, Item
     else
         #guest
         can :read, Item

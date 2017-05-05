@@ -3,17 +3,24 @@
     <%= render :partial => "item_details" %>
   </div>
   <div class="small-5 columns">
-  	<%= render :partial => "partials/cart" unless session[:cart].nil? || session[:cart].empty? %>
+
+    <%if can? :add_to_cart, Item %>
+      <%= render :partial => "partials/cart" %>
+    <% end %>
+
   	<% if can? :edit, ItemPrice %>
     	<%= render :partial => "price_history" unless @price_history.empty? %>
     <% end %>
+
     <%= render :partial => "similar_items" unless @similar_items.empty? %>
-    <%= link_to("New Purchase", new_purchase_path(item_id: @item.id), class: 'button tiny radius', id: "new_purchase_link", remote: true) %>
+    <% if can? :create, Purchase %>
+      <%= link_to("New Purchase", new_purchase_path(item_id: @item.id), class: 'button tiny radius', id: "new_purchase_link", remote: true) %>
+    <% end %>
   </div>
 </div>
 
 <!-- Add buttons to list all, edit project or destroy object -->
 <%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
 
-<%= link_to("Add To Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
+<%= link_to("Add To Cart", add_to_cart_path(@item.id), remote: true, class: 'button tiny radius') %>
 

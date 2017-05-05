@@ -26,8 +26,6 @@
     def add_to_cart
       @item = Item.find(params[:id])
       add_item_to_cart(@item.id.to_s)
-      flash[:notice] = 'Item was added to cart'
-      redirect_to item_path(@item)
     end
 
     def remove_from_cart
