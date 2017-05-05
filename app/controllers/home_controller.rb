@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   	@orders_to_ship = Order.not_shipped
     @pending_orders = Order.not_shipped.where(user: current_user)
     @previous_orders = Order.chronological.where(user: current_user)
+    @employee_list = User.active.where(role: "shipper").alphabetical
   end
 
   def about

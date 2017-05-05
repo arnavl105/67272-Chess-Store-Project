@@ -1,3 +1,4 @@
+<div id="reorder_list">
 <h5>Reorder List</h5>
 
 <% unless @items_to_reorder.nil? || @items_to_reorder.empty? %>
@@ -15,6 +16,7 @@
           <td><%= link_to item.name, item_path(item) %></td>
           <td><%= item.inventory_level %></td>
           <td><%= item.reorder_level %></td>
+          <td><%= link_to("Reorder", new_purchase_path(item_id: item.id), class: 'button tiny radius', id: "new_purchase_link", remote: true) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -22,3 +24,4 @@
 <% else %>
   <p>There are no items that need to be reorder at this time.</p>
 <% end %>
+</div>

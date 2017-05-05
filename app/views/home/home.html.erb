@@ -4,6 +4,7 @@
 	<%= render :partial => 'general_home' %>
 <% elsif current_user.role? :manager %>
 	<%= render :partial => 'reorder_list' %>
+	<%= render :partial => 'employee_list' %>
 <% elsif current_user.role? :shipper %>
 	<%= render :partial => 'ship_list' %>
 <% elsif current_user.role? :customer %>

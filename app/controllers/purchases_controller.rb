@@ -16,6 +16,7 @@ class PurchasesController < ApplicationController
 
     if @purchase.save
       @item = @purchase.item
+      @items_to_reorder = Item.need_reorder.alphabetical.to_a
       respond_to do |format|
         format.js
         format.html {redirect_to purchases_path, notice: "Successfully added a purchase for #{@purchase.quantity} #{@purchase.item.name}."}
