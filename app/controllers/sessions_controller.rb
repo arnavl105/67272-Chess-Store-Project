@@ -26,11 +26,17 @@
     def add_to_cart
       @item = Item.find(params[:id])
       add_item_to_cart(@item.id.to_s)
+      update_total
     end
 
     def remove_from_cart
       @item = Item.find(params[:id])
       remove_item_from_cart(@item.id.to_s)
+      update_total
+    end
+
+    def update_total
+      session[:cart_total] = calculate_cart_items_cost
     end
 
   end
