@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new', :as => :login
   get 'logout' => 'sessions#destroy', :as => :logout
 
-  get 'items/:id/add_to_cart' => 'items#add_to_cart', :as => :add_to_cart
+  get 'items/add_to_cart/:id' => 'sessions#add_to_cart', :as => :add_to_cart
 
   patch 'toggle_order/:id' => 'orders#toggle', as: :toggle
 

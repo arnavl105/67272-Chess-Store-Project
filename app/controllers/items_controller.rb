@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :add_to_cart]
 
   authorize_resource
 
@@ -52,9 +52,6 @@ class ItemsController < ApplicationController
     redirect_to items_path, notice: "Successfully removed #{@item.name} from the system."
   end
 
-  def add_to_cart
-    add_item_to_cart(@item.id.to_s)
-  end
 
   private
   def set_item

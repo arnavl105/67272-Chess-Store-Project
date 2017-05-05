@@ -12,5 +12,5 @@
 <!-- Add buttons to list all, edit project or destroy object -->
 <%= render partial: "partials/object_options", locals: {model_name: "item", object: @item}  %>
 
-<%= link_to("Add To Cart", add_to_cart_path(@item), class: 'button tiny radius') %>
+<%= link_to("Add To Cart", add_to_cart_path(@item.id), class: 'button tiny radius') %>
 
