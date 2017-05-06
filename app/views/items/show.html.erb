@@ -4,9 +4,7 @@
   </div>
   <div class="small-5 columns">
 
-    <%if can? :add_to_cart, Item %>
-      <%= render :partial => "partials/cart" %>
-    <% end %>
+      <%= render :partial => "partials/cart" unless current_user.nil? or ! current_user.role? :customer %>
 
   	<% if can? :edit, ItemPrice %>
     	<%= render :partial => "price_history" unless @price_history.empty? %>

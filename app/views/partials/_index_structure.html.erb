@@ -11,7 +11,7 @@
   </div>
   <div class="small-4 columns">
     <!-- render the sidebar, if it exists -->
-    <%= render partial: "partials/cart" if can? :add_to_cart, Item %>
+    <%= render partial: "partials/cart" unless current_user.nil? or ! current_user.role? :customer %>
     <%= render partial: "#{sidebar}" unless sidebar.blank? %>
   </div>
 </div>
