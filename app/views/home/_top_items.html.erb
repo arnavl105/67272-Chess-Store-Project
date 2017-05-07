@@ -1,0 +1,32 @@
+<h5>Top Selling Items</h5>
+
+<% unless @top_items.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item Name</th>
+        <th>Category</th>
+        <% if can? :create, Purchase %>
+          <th>Number Sold</th>
+          <th>Inventory Level</th>
+          <th>Reorder Level</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @top_items.each do |item| %>
+        <tr>
+          <td><%= link_to item.name, item_path(item) %></td>
+          <td><%= item.category.capitalize %></td>
+          <% if can? :create, Purchase %>
+            <td><%= OrderItem.where(item: item).count %></td>
+            <td><%= item.inventory_level %></td>
+            <td><%= item.reorder_level %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no top selling items at this time.</p>
+<% end %>
