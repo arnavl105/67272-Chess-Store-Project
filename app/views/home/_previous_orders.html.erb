@@ -8,6 +8,7 @@
         <th>School</th>
         <th>Items</th>
         <th>Date Placed</th>
+        <th>Date Shipped</th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +22,7 @@
           <% end %>
           </td>
           <td><%= order.date %></td>
+          <td><%= order.order_items.first.shipped_on %></td>
         </tr>
       <% end %>
     </tbody>
