@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   def update
     if @order.update(order_params)
       @order.pay
+      clear_cart
       redirect_to home_path, notice: "Successfully placed order"
     else
       render action: 'pay'
