@@ -1,15 +1,15 @@
 <% if can? :edit, Item %>
-	<%= render partial: "partials/index_structure", locals: {model_name: "item", 
+	<%= render partial: "partials/item_index_structure", locals: {model_name: "item", 
 	                                                         primary: "active_items", 
 	                                                         secondary: nil,
 	                                                         sidebar: "inactive_items"} %>
 <% elsif ! current_user.nil? && !(current_user.role? :shipper) %>
-	<%= render partial: "partials/index_structure", locals: {model_name: "item", 
+	<%= render partial: "partials/item_index_structure", locals: {model_name: "item", 
                                                          primary: "active_items", 
                                                          secondary: nil,
                                                          sidebar: "partials/cart"} %>
 <% else %>
-	<%= render partial: "partials/index_structure", locals: {model_name: "item", 
+	<%= render partial: "partials/item_index_structure", locals: {model_name: "item", 
 	                                                         primary: "active_items", 
 	                                                         secondary: nil,
 	                                                         sidebar: nil } %>

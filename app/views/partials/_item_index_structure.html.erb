@@ -1,0 +1,36 @@
+<div class="row">
+
+  <div class="small-2 columns">
+
+    <ul class="tabs vertical" data-tab>
+      <li class="tab-title active"><a href="#panel11">Boards</a></li>
+      <li class="tab-title"><a href="#panel21">Pieces</a></li>
+      <li class="tab-title"><a href="#panel31">Clocks</a></li>
+      <li class="tab-title"><a href="#panel41">Supplies</a></li>
+    </ul>
+
+  </div>
+
+  <div class="small-6 columns">
+    <!-- primary partial gets displayed here in main div -->
+    <%= render partial: "#{primary}" %>
+    <!-- sometimes we want another partial below -->
+    <% unless secondary.nil? %>
+      <p>&nbsp;</p>
+      <%= render partial: "#{secondary}" %>
+    <% end %>
+    
+  </div>
+  <div class="small-4 columns">
+    <!-- render the sidebar, if it exists -->
+    <%= render partial: "#{sidebar}" unless sidebar.blank? %>
+  </div>
+</div>
+
+<!-- Add a button for new instances of object -->
+<% if can? :create, model_name %>
+  <%= link_to(eval("new_#{model_name}_path"), class: "button radius") do %>
+    <!-- <i class="fa fa-plus"></i> -->
+    &nbsp;Add a New <%= model_name.capitalize %>
+  <% end %>
+<% end %>
