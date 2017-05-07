@@ -1,5 +1,7 @@
 <% unless items.nil? || items.empty? %>
 
+
+
   <ul class="small-block-grid-3">
     <% items.each do |item| %>
         <li>
@@ -14,6 +16,8 @@
         </li>
       <% end %>  
   </ul>
+
+  <%= will_paginate items, renderer: FoundationPagination::Rails %>
 
 <% end %>
 
