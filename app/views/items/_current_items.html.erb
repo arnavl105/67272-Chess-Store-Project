@@ -1,6 +1,24 @@
 <% unless items.nil? || items.empty? %>
   <h5><%= item_type.capitalize %></h5>
-  <table class="table table-striped">
+
+  <ul class="small-block-grid-3">
+    <% items.each do |item| %>
+        <li>
+        <% unless item.photo_url.nil? %>
+          <p><%= link_to image_tag(item.photo_url), item_path(item) %></p>
+        <% else %>
+          <p><%= link_to image_tag('img_not_available.png'), item_path(item) %></p>
+        <% end %>
+        <%= link_to item.name, item_path(item) %>
+        <br>
+        <%= number_to_currency(item.current_price) %>
+        </li>
+      <% end %>  
+  </ul>
+
+<% end %>
+
+<!--   <table class="table table-striped">
     <thead>
       <tr>
         <th width="300">Name</th>
@@ -17,5 +35,4 @@
         </tr>
       <% end %>
     </tbody>
-  </table>
-<% end %>
+  </table> -->
