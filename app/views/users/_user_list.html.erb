@@ -1,0 +1,25 @@
+<% unless @users.empty? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="250">Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.proper_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.phone %></td>
+          <td><%= user.role.capitalize %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>There are no users which really shouldn't happen. You definitely screwed something up.</p>
+<% end %>
+</div>

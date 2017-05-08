@@ -12,6 +12,10 @@ class UsersController < ApplicationController
     @user = :current_user
   end
 
+  def index
+    @users = User.active.employees.all
+  end
+
   def create
     @user = User.new(user_params) 
 
