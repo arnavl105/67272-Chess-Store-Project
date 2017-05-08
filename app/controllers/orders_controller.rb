@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
 
   before_action :set_order, only: [:toggle, :pay, :update]
 
+  def index
+    @orders = Order.chronological.all
+  end
+
   def new
     @order = Order.new
   end

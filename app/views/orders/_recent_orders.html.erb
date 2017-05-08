@@ -1,0 +1,32 @@
+<% if @orders.empty? %>
+  <h4>No purchases at this time.</h4>
+<% else %>
+  <h4>Recent Orders</h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">School</th>
+        <th width="150">Items</th>
+        <th width="150">Date Placed</th>
+        <th width="150">Date Shipped</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.school.name %></td>
+          <td>
+            <ul>
+            <% order.order_items.each do |item| %>
+              <li><%= link_to(item.item.name, item_path(item.item)) %>, <%= item.quantity %></li>
+            <% end %>
+            </ul>
+          </td>
+          <td><%= order.date %></td>
+          <td><%= order.order_items.first.shipped_on %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+<p>&nbsp;</p>

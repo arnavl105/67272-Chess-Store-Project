@@ -5,6 +5,10 @@
         <!-- link to home -->
         <li><%= link_to "Home", home_path %></li>
 
+
+        <% if current_user.nil?%>
+          <li><%= link_to "Items", items_path %></li>
+        <% elsif current_user.role? :admin or current_user.role? :manager %>
         <!-- options for items -->
         <li class="has-dropdown">
           <%= link_to "Items", items_path %>
@@ -15,15 +19,38 @@
           </ul>
         </li>
 
+
+        <li><%= link_to "Orders", orders_path %></li>
+
         <!-- options for purchases -->
         <li>
-          <%= link_to "Purchases", purchases_path %>
+          <%= link_to "Employees", users_path %>
         </li>
 
-        <!-- options for prices -->
-        <li>
-          <%= link_to "Prices", item_prices_path %>
-        </li>
+        <% elsif current_user.role? :shipper %>
+          <li><%= link_to "Items", items_path %></li>
+          <li><%= link_to "Orders", orders_path %></li>
+        <% elsif current_user.role? :customer %>
+          <li><%= link_to "Items", items_path %></li>
+          <li><%= link_to "Orders", orders_path %></li>
+        <% else %>
+        You shouldn't be seeing this, what did you screw up?! 
+        <% end %>
+
+
+
+
+      </ul>
+
+      <ul class='right'>
+        <div id ="login">
+          <% if logged_in? %>
+            <li><%= link_to 'Logout', logout_path %></li>
+            <li><%= current_user.proper_name %>:<%= current_user.role %></h5></li>
+          <% else %>
+            <li><%= link_to 'Login', login_path %></li>
+          <% end %>
+        </div>
       </ul>
 
     </section>

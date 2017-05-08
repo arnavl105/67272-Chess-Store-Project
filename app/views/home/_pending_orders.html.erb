@@ -13,10 +13,11 @@
         <tr>
           <td><%= order.school.name %></td>
           <td>
-          <ul><% order.order_items.each do |item| %>
+          <ul>
+          <% order.order_items.each do |item| %>
             <li><%= item.item.name %>, <%= item.quantity %></li>
-          </ul>
           <% end %>
+          </ul>
           </td>
           <td><%= order.date %></td>
         </tr>
