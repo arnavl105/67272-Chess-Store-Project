@@ -33,6 +33,12 @@ module ChessStoreHelpers
       end
     end
 
+    def edit_item_quantity(item_id, quantity)
+      if quantity > 0
+        session[:cart][item_id] = quantity
+      end
+    end
+
     def calculate_cart_items_cost
       total = 0
       return total if session[:cart].empty? # skip if cart empty...

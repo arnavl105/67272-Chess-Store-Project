@@ -1,0 +1,21 @@
+<h5>Top Selling Items</h5>
+
+<% unless @top_items.empty? %>
+
+  <ul class="small-block-grid-5">
+    <% @top_items.each do |item| %>
+        <li>
+        <% unless item.photo_url.nil? %>
+          <p><%= link_to image_tag(item.photo_url), item_path(item) %></p>
+        <% else %>
+          <p><%= link_to image_tag('img_not_available.png'), item_path(item) %></p>
+        <% end %>
+        <%= link_to item.name, item_path(item) %>
+        <br>
+        <%= number_to_currency(item.current_price) %>
+        </li>
+    <% end %>  
+  </ul>
+
+<% end %>
+

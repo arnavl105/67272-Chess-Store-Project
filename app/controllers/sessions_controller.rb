@@ -35,6 +35,15 @@
       update_total
     end
 
+    def edit_cart
+    end
+
+    def update_cart
+      @item = Item.find(params[:id])
+      edit_item_quantity(@item.id.to_s, params[:quantity])
+      update_total
+    end
+
     def update_total
       session[:cart_total] = calculate_cart_items_cost
     end
