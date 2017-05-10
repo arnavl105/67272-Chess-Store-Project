@@ -1,9 +1,9 @@
 <div id="edit_cart">
+	Quantity:
 <%= form_tag(update_cart_path(params[:id]), :method => :post, remote: true) do %>
 
-  <%= number_field_tag(:quantity) %>
+  <%= number_field_tag(:quantity, session[:cart][params[:id]]) %>
 
-  <p>&nbsp;</p>
   <div class="form-actions">
     <%= submit_tag("Submit", class: 'button tiny radius') %>
     <%= link_to 'Cancel', :back, class: 'button tiny radius alert' %>

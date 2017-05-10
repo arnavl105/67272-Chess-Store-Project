@@ -6,6 +6,7 @@
         <th>School</th>
         <th>Items</th>
         <th>Date Placed</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -20,10 +21,12 @@
           </ul>
           </td>
           <td><%= order.date %></td>
+          <td><%= link_to("Cancel", order_path(order) , method: 'delete', data: {confirm: "Are you sure you want to cancel this order?"}, class: 'button small') %> </td>
         </tr>
       <% end %>
     </tbody>
   </table>
-  <% end %>
 
 </div>
+
+<% end %>

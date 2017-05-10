@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   include ChessStoreHelpers::Cart
 
-  before_action :set_order, only: [:toggle, :pay, :update]
+  before_action :set_order, only: [:toggle, :pay, :update, :destroy]
 
   def index
     @orders = Order.chronological.all
@@ -22,6 +22,11 @@ class OrdersController < ApplicationController
     else
       render action: 'new'
     end
+  end
+
+  def destroy
+    @order.destroy
+    redirect_to home_path
   end
 
   def pay
