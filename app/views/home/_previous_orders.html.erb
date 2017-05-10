@@ -16,10 +16,11 @@
         <tr>
           <td><%= order.school.name %></td>
           <td>
-          <ul><% order.order_items.each do |item| %>
-            <li><%= item.item.name %>, <%= item.quantity %></li>
-          </ul>
-          <% end %>
+            <ul>
+              <% order.order_items.each do |item| %>
+                <li><%= link_to item.item.name, item_path(item.item) %>, <%= item.quantity %></li>
+              <% end %>
+            </ul>
           </td>
           <td><%= order.date %></td>
           <td><%= order.order_items.first.shipped_on %></td>
