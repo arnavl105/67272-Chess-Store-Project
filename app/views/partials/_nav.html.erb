@@ -14,7 +14,6 @@
           <%= link_to "Items", items_path %>
           <ul class="dropdown">
             <li><%= link_to "Item List", items_path %></li>
-            <li><%= link_to "Reorder List", home_path %></li>
             <li><%= link_to "Add an Item", new_item_path %></li>
           </ul>
         </li>
@@ -23,9 +22,21 @@
         <li><%= link_to "Orders", orders_path %></li>
 
         <!-- options for purchases -->
-        <li>
-          <%= link_to "Employees", users_path %>
-        </li>
+
+        <% if current_user.role? :admin %>
+
+          <li class="has-dropdown">
+          <%= link_to "Users", users_path %>
+          <ul class="dropdown">
+            <li><%= link_to "User List", users_path %></li>
+            <li><%= link_to "Add an User", new_user_path %></li>
+          </ul>
+
+        <% else %>
+          <li>
+            <%= link_to "Employees", users_path %>
+          </li>
+        <% end %>
 
         <% elsif current_user.role? :shipper %>
           <li><%= link_to "Items", items_path %></li>
@@ -45,8 +56,11 @@
       <ul class='right'>
         <div id ="login">
           <% if logged_in? %>
+            <li><%= link_to current_user.proper_name, user_path(current_user) %></h5></li>
             <li><%= link_to 'Logout', logout_path %></li>
-            <li><%= current_user.proper_name %>:<%= current_user.role %></h5></li>
+            <% if current_user.role? :customer? %>
+                <%= link_to 'My Cart', new_order_path() %>
+            <% end %>
           <% else %>
             <li><%= link_to 'Login', login_path %></li>
           <% end %>

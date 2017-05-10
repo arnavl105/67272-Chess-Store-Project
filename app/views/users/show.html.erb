@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="small-8 columns">
+    <%= render :partial => "user_details" %>
+  </div>
+
+</div>
+
+<!-- Add buttons to list all, edit project or destroy object -->
+    <% if can? :edit, @user %>
+      <%= link_to("Edit User", edit_user_path(@user), class: 'button radius')%>
+
+      &nbsp;&nbsp;
+    <% end %>
+    
+
+
