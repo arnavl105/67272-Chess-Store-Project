@@ -10,6 +10,7 @@
       <% session[:cart].each do |item_id, quantity| %>
         <tr>
 	        <td><%= link_to Item.find(item_id).name, item_path(item_id) %>, <%= quantity%></td>
+          <td class="centered"><%= link_to(image_tag("check_black.gif"), edit_cart_path(item_id), remote: true) %></td>
 	        <td class="centered"><%= link_to(image_tag("remove.png"), remove_from_cart_path(item_id), remote: true) %></td>
         </tr>
       <% end %>

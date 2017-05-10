@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'remove_from_cart/:id' => 'sessions#remove_from_cart', :as => :remove_from_cart
 
   get 'edit_cart/:id' => 'sessions#edit_cart', :as => :edit_cart
-  get 'update_cart/:id/:quantity' => 'sessions#update_cart', :as => :update_cart
+  post 'update_cart/:id' => 'sessions#update_cart', :as => :update_cart
 
   patch 'toggle_order/:id' => 'orders#toggle', as: :toggle
 

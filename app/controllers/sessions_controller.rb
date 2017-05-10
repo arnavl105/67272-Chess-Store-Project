@@ -40,7 +40,7 @@
 
     def update_cart
       @item = Item.find(params[:id])
-      edit_item_quantity(@item.id.to_s, params[:quantity])
+      edit_item_quantity(@item.id.to_s, params[:quantity].to_i)
       update_total
     end
 
