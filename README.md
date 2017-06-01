@@ -1,7 +1,7 @@
 67272 Chess Store Project
 ===
 
-This is my final project for 67-272 taught at CMU. We were expected to create a webapp for a chess store specializaing in supplying large orders to schools. For this phase of the project we were provided models and some of basic cart functions in the starter code, however we were required to create our own implementation of these models in previous phases of the project.
+This is my final project for 67-272 taught at CMU. We were expected to create a webapp for a chess store specializing in supplying large orders to schools. For this phase of the project we were provided models and some of basic cart functions in the starter code, however we were required to create our own implementation of these models in previous phases of the project.
 
 You will need to run `bundle install` to get the needed testing gems. You can populate the development database with realistic data by running `rake db:populate`.  All passwords are 'secret' in the system for all users. The list of known users include (username, role): 
 
